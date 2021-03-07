@@ -1,0 +1,39 @@
+﻿@using ListPeople.Data
+@model HomeViewModel
+
+@if (!String.IsNullOrEmpty(Model.Message))
+{
+<div class="row col-md-12">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @Model.Message
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+}
+
+    <div class="container row col-md-12">
+        <a href="/home/addPeople" class="btn btn-danger">Add People</a>
+
+
+        <table class="table table-hover table-striped table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Person person in Model.People)
+                {
+                <tr>
+                    <td>@person.FirstName</td>
+                    <td>@person.LastName</td>
+                    <td>@person.Age</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
