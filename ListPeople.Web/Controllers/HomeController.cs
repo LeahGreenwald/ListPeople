@@ -13,9 +13,9 @@ namespace ListPeople.Web.Controllers
     public class HomeController : Controller
     {
         private string _connectionString = @"Data Source=.\sqlexpress;Initial Catalog=people;Integrated Security=true;";
+
         public IActionResult Index()
-        {
-            
+        {            
             PeopleDb db = new PeopleDb(_connectionString);
             HomeViewModel vm = new HomeViewModel{
                 People = db.GetPeople()
@@ -26,10 +26,12 @@ namespace ListPeople.Web.Controllers
             }
             return View(vm);
         }
+
         public IActionResult AddPeople()
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult AddPeople(List<Person> people)
         {
